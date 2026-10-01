@@ -96,3 +96,15 @@ docker run -p 8082:8082 -e CORE_URL=https://aurora.example -e API_KEY=... aurora
 
 The server doesn't handle `SIGTERM` itself, so add `--init` to `docker run` if you want
 fast stops.
+
+## Releases
+
+Merging to `main` runs `.github/workflows/semantic-release.yaml`, which uses the shared
+[GEWIS/actions](https://github.com/GEWIS/actions) workflows:
+
+- **Version:** semantic-release picks the version from Conventional Commit messages
+  (`fix:` → patch, `feat:` → minor, `BREAKING CHANGE` → major). It tags the release and
+  creates a GitHub release; `release.config.mjs` configures it.
+- **Images:** the Docker image is built and pushed as `<version>` and `latest` to:
+  - `abc.docker-registry.gewis.nl/nc/aurora/info`
+  - `ghcr.io/gewis/aurora/info`
