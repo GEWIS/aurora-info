@@ -78,7 +78,13 @@ pnpm typecheck
 pnpm lint
 pnpm test              # vitest: anonymization, caching, 502 handling, proxy trust
 pnpm build             # dist/client (SPA) + dist/node (server)
+pnpm format            # prettier --check (format-fix to write)
 ```
+
+`pnpm install` installs a Husky pre-commit hook. It runs Prettier and ESLint on the staged
+files (lint-staged), then `pnpm typecheck` and `pnpm test`. CI
+(`.github/workflows/build.yaml`) runs lint, format, test and build, plus a Docker build, on
+pushes and pull requests to `main`.
 
 ## Production
 
