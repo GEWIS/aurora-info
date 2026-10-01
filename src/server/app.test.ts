@@ -24,7 +24,13 @@ const room: CoreRoomStatus = {
 };
 
 const pcs: CorePc[] = [
-  { pcId: '1', users: [{ memberId: 1001, name: 'Bob Secret', symbol: '' }], remote: false, lockedAt: null, status: 'in-use' },
+  {
+    pcId: '1',
+    users: [{ memberId: 1001, name: 'Bob Secret', symbol: '' }],
+    remote: false,
+    lockedAt: null,
+    status: 'in-use',
+  },
 ];
 
 const tracks: CoreTrack[] = [
@@ -51,7 +57,13 @@ describe('GET /api/status', () => {
     expect(res.headers['cache-control']).toBe('no-store');
     expect(body.room).toStrictEqual({ open: false, beerTime: null, lastCall: null, coffeeStatus: 0 });
     expect(body.pcs).toHaveLength(11);
-    expect(body.pcs[0]).toStrictEqual({ pcId: '1', status: 'in-use', remote: false, lockedAt: null, users: [{ symbol: '' }] });
+    expect(body.pcs[0]).toStrictEqual({
+      pcId: '1',
+      status: 'in-use',
+      remote: false,
+      lockedAt: null,
+      users: [{ symbol: '' }],
+    });
     expect(body.playingSong).toBe('Playing music');
     for (const secret of ['Alice Responsible', 'Bob Secret', 'Secret Party', '4242', '1001']) {
       expect(res.text).not.toContain(secret);

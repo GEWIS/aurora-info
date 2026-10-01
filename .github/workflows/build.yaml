@@ -1,0 +1,25 @@
+name: Lint and build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-build:
+    uses: GEWIS/actions/.github/workflows/lint-and-build-pnpm.yml@v1
+    with:
+      node-version: '24.x'
+      format: true
+      test: true
+
+  docker-build:
+    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1
+    with:
+      projects: '["."]'

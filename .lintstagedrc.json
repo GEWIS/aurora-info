@@ -1,0 +1,4 @@
+{
+  "*.{ts,tsx,js,mjs,cjs,json,yaml,yml,md,css,html}": ["prettier --write --ignore-unknown"],
+  "src/**/*.{ts,tsx}": ["eslint --max-warnings=0"]
+}

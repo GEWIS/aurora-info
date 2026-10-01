@@ -15,7 +15,10 @@ function describe(pc: PublicPc, now: Date): { tone: Tone; text: string } {
   if (pc.pcId === VDESKTOP_PC_ID) {
     const n = pc.users.length;
     if (n === 0) return { tone: 'free', text: 'Free' };
-    const symbols = pc.users.map((u) => u.symbol).filter(Boolean).join(' ');
+    const symbols = pc.users
+      .map((u) => u.symbol)
+      .filter(Boolean)
+      .join(' ');
     return { tone: 'remote', text: `${n} ${n === 1 ? 'session' : 'sessions'}${symbols ? ` ${symbols}` : ''}` };
   }
 

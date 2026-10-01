@@ -42,7 +42,11 @@ export default function InfoTiles({ room, playingSong }: { room: PublicRoomStatu
         </span>
       </Tile>
       <Tile icon="♫" title="Music">
-        {playingSong ? <span className="line-clamp-2">{playingSong}</span> : <span className="text-muted">Nothing playing</span>}
+        {playingSong ? (
+          <span className="line-clamp-2">{playingSong}</span>
+        ) : (
+          <span className="text-muted">Nothing playing</span>
+        )}
       </Tile>
     </div>
   );

@@ -18,11 +18,11 @@ It is a single package with two halves:
 
 The server calls these core endpoints with an `x-api-key` header:
 
-| Core endpoint | Integration scope |
-|---|---|
-| `GET /api/handler/screen/info/room-status` | `getInfoRoomStatus` |
-| `GET /api/handler/screen/info/pc-usage` | `getInfoPcUsage` |
-| `GET /api/spotify/currently-playing` | `getSpotifyCurrentlyPlaying` |
+| Core endpoint                              | Integration scope            |
+| ------------------------------------------ | ---------------------------- |
+| `GET /api/handler/screen/info/room-status` | `getInfoRoomStatus`          |
+| `GET /api/handler/screen/info/pc-usage`    | `getInfoPcUsage`             |
+| `GET /api/spotify/currently-playing`       | `getSpotifyCurrentlyPlaying` |
 
 Core returns full data to this key: names, member ids, responsibles and the closed
 message. Treat the key as a secret. `src/server/anonymize.ts` is the only place where that
@@ -54,12 +54,12 @@ integration user with the three scopes above. Then read its key with
 Set these as environment variables, or in a `.env` file in the working directory (see
 `.env.example`):
 
-| Variable | Required | Description |
-|---|---|---|
-| `CORE_URL` | yes | Base URL of Aurora Core, e.g. `http://localhost:3000` |
-| `API_KEY` | yes | Integration key with the three scopes above |
-| `TRUST_PROXY` | no | Express `trust proxy` value (hop count, `loopback`, IPs/CIDRs). Set this behind a reverse proxy, otherwise every visitor looks like the proxy and the TU/e check fails. Leave it empty when the server is exposed directly. |
-| `PORT` | no | Listen port, default `8082` |
+| Variable      | Required | Description                                                                                                                                                                                                                 |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CORE_URL`    | yes      | Base URL of Aurora Core, e.g. `http://localhost:3000`                                                                                                                                                                       |
+| `API_KEY`     | yes      | Integration key with the three scopes above                                                                                                                                                                                 |
+| `TRUST_PROXY` | no       | Express `trust proxy` value (hop count, `loopback`, IPs/CIDRs). Set this behind a reverse proxy, otherwise every visitor looks like the proxy and the TU/e check fails. Leave it empty when the server is exposed directly. |
+| `PORT`        | no       | Listen port, default `8082`                                                                                                                                                                                                 |
 
 ## Development
 
